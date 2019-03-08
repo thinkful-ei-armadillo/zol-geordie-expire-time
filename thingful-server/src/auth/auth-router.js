@@ -48,6 +48,7 @@ authRouter.post('/login',bodyParser, (req, res, next) => {
 authRouter.post('/refresh', requireAuth, (req, res, next) => {
   const sub = req.user.user_name
   const payload = { user_id: req.user.id }
+  
   res.send({
     authToken: AuthService.createJwt(sub, payload),
   })
